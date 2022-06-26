@@ -1,0 +1,32 @@
+import React from "react";
+import {coin_structure} from "../utils/utils";
+import {TableBody, TableCell, TableRow} from "@mui/material";
+
+interface CoinsTableBodyProps {
+    coins: coin_structure[]
+}
+
+export const CoinsTableBody = (props: CoinsTableBodyProps) => {
+    const {coins} = props;
+    return (
+        <>
+            <TableBody>
+                {
+                    coins && coins.map((coin: coin_structure) => (
+                        <TableRow>
+                            <TableCell>{coin.marketName}</TableCell>
+                            <TableCell>{coin.currToName}</TableCell>
+                            <TableCell>{coin.bid}</TableCell>
+                            <TableCell>{coin.ask}</TableCell>
+                            <TableCell>{coin.LTRate}</TableCell>
+                            <TableCell>{coin.LTVol}</TableCell>
+                            <TableCell>{coin.isActive ? "Yes" : "No"}</TableCell>
+                        </TableRow>
+                    ))
+                }
+            </TableBody>
+        </>
+    );
+}
+
+export default CoinsTableBody;
