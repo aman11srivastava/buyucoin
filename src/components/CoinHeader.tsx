@@ -13,15 +13,15 @@ export const CoinHeader = (props: CoinHeaderProps) => {
     const classes = useStyles();
     const {marketName, currName} = props;
 
-    function goToHomePage() {
-        navigate('/')
+    function goBack() {
+        navigate('/coins')
     }
 
     return (
         <>
             <div className={classes.headerContent}>
                 <div>
-                    <Button onClick={goToHomePage}>Back</Button>
+                    <Button onClick={goBack}>Back</Button>
                 </div>
                 <div>
                     <Typography fontWeight={"bold"}
