@@ -58,10 +58,12 @@ export const SingleCoin = () => {
                     <SingleContent heading={"Last Trade Rate"} value={coin?.LTRate}/>
                     <SingleContent heading={"Last Trade Volume"} value={coin?.LTVol}/>
                 </div>
-                <Typography variant={"h4"}>
-                    Current Status
+                <Box>
+                    <Typography variant={"h4"}>
+                        Current Status
+                    </Typography>
                     <Typography style={{color: coin?.isActive ? "green" : "red"}} variant={"h5"}>{coin?.isActive ? "Active" : "Not Active"}</Typography>
-                </Typography>
+                </Box>
             </Paper>
         </Box>
     )

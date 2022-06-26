@@ -27,11 +27,9 @@ export const CoinsTableBody = (props: CoinsTableBodyProps) => {
                             <TableCell>{coin.ask}</TableCell>
                             <TableCell>{coin.LTRate}</TableCell>
                             <TableCell>{coin.LTVol}</TableCell>
-                            <TableCell
-                                style={{
-                                    fontWeight: 'bold',
-                                    color: coin.isActive ? "green" : "red"
-                                }}>{coin.isActive ? "Yes" : "No"}</TableCell>
+                            <TableCell align={"center"} style={{fontWeight: 'bold', color: coin.isActive ? "green" : "red"}}>
+                                {coin.isActive ? "Yes" : "No"}
+                            </TableCell>
                         </TableRow>
                     ))
                 }
