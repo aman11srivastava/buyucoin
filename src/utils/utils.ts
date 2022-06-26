@@ -1,6 +1,6 @@
 export const all_coins: string = "https://api.buyucoin.com/ticker/v1.0/liveData";
 
-export const getSingleCoinData = (marketName: string) => {
+export const getSingleCoinData = (marketName: string | undefined) => {
     return `https://api.buyucoin.com/ticker/v1.0/liveData?symbol=${marketName}`
 }
 
@@ -37,27 +37,27 @@ export type table_header_type = {
 }
 export const table_header: table_header_type[] = [
     {
-        id: 2,
+        id: 1,
         name: "Market Name"
     },
     {
-        id: 3,
+        id: 2,
         name: "Currency Name"
     },
     {
-        id: 4,
+        id: 3,
         name: "Bid"
     },
     {
-        id: 5,
+        id: 4,
         name: "Ask"
     },
     {
-        id: 6,
+        id: 5,
         name: 'Rate'
     },
     {
-        id: 7,
+        id: 6,
         name: "Volume"
     },
     {
@@ -65,3 +65,9 @@ export const table_header: table_header_type[] = [
         name: "Current Active Status"
     }
 ]
+
+export function getColorOfContent (price1: string | undefined, price2: string | undefined): string {
+    let num1: number = Number(price1);
+    let num2: number = Number(price2);
+    return num1 > num2 ? "green" : "red"
+}
