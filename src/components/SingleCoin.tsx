@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from "react";
-import {NavigateFunction, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import {coin_structure, getColorOfContent, getSingleCoinData} from "../utils/utils";
-import {Box, Button, CircularProgress, Paper, Typography} from "@mui/material";
+import {Box, CircularProgress, Paper, Typography} from "@mui/material";
 import {useStyles} from "../styles/singleCoin";
 import SingleContent from "./SingleContent";
+import CoinHeader from "./CoinHeader";
+import {useParams} from "react-router-dom";
 
 export const SingleCoin = () => {
     const {market} = useParams();
     const [loading, setLoading] = useState<boolean>(false);
     const [coin, setCoin] = useState<coin_structure>();
     const classes = useStyles();
-    const navigate: NavigateFunction = useNavigate();
 
     useEffect(() => {
         setLoading(true);
@@ -23,25 +23,12 @@ export const SingleCoin = () => {
 
     }, [market])
 
-    console.log(coin)
     if (loading) return <CircularProgress/>
-
-    function goToHomePage() {
-        navigate('/')
-    }
 
     return (
         <Box>
             <Paper className={classes.paper} elevation={2}>
-                <div className={classes.headerContent}>
-                    <div>
-                        <Button onClick={goToHomePage}>Back</Button>
-                    </div>
-                    <div>
-                        <Typography fontWeight={"bold"}
-                                    variant={"h3"}>{coin?.currToName} / {coin?.marketName}</Typography>
-                    </div>
-                </div>
+                <CoinHeader marketName={coin?.marketName} currName={coin?.currToName}/>
                 <div className={classes.container}>
                     <div>
                         <Typography fontWeight={"bold"} variant={"h5"}>Bid Price</Typography>
